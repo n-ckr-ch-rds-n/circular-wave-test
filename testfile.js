@@ -85,7 +85,7 @@ function addTotals (records) {
   var paid = 0;
 
   records.forEach(function (value, index) {
-    hours += value.hoursWorked;
+    hours += parseInt(value.hoursWorked);
     paid += (value.hoursWorked * value.hourlyRate);
   });
 
