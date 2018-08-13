@@ -73,11 +73,12 @@ function processRecords (records) {
 }
 
 function sortRecords (records) {
-
-  var sorted = records;
-  // sort results in date order, most recent last
-
-  return sorted;
+  records.sort(function(a, b) {
+    a = new Date(a.date.split("/")[2], a.date.split("/")[1]-1, a.date.split("/")[0]);
+    b = new Date(b.date.split("/")[2], b.date.split("/")[1]-1, b.date.split("/")[0]);
+    return a>b ? 1 : a<b ? -1 : 0;
+  });
+  return records;
 }
 
 function addTotals (records) {
