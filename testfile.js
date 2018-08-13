@@ -3,19 +3,17 @@
 var btn = document.getElementById("get-records");
 btn.addEventListener("click", buttonHandler);
 
-var buttonHandler = function () {
-
-  toggleButton(false);
+function buttonHandler () {
+  toggleButton(false, btn);
   getRecords();
 };
 
-function toggleButton (loaded) {
-
+function toggleButton (loaded, element) {
   // fix this method to change the button text
 	// should be a generic method i.e. implementation should not alter a specific element
-  this.innerHTML = loaded ? "Get next" : "Loading...";
-  this.classList.toggle("button-not-loading");
-  this.classList.toggle("button-loading");
+  element.innerHTML = loaded ? "Get next" : "Loading...";
+  element.classList.toggle("button-not-loading");
+  element.classList.toggle("button-loading");
 }
 
 function getRecords () {
@@ -25,7 +23,7 @@ function getRecords () {
   var ids = Server.getIds();
 
   // getting each corresponding record is an async operation
-	
+
   // you can get a SINGLE record by calling Server.getRecord(recordId, callbackFunction)
   // callbackFunction takes 2 parameters, error and data
   // invocation as follows
@@ -34,11 +32,11 @@ function getRecords () {
     // if the fetch is successful the callback is invoked with error variable set to null, and data variable will hold the response (i.e. the record you wanted to retrieve)
   });
 
-	
+
   // you need to make sure the list is not rendered until we have the records...but need to allow for any fetch errors or app will hang
 	// i.e. a record you request might not exist - how would you allow for this?
 	// when you have the records, call processRecords as follows
-  processRecords(allThe Records);
+  processRecords(allTheRecords);
 }
 
 
