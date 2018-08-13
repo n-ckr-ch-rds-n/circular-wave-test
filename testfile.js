@@ -9,8 +9,6 @@ function buttonHandler () {
 };
 
 function toggleButton (loaded, element) {
-  // fix this method to change the button text
-	// should be a generic method i.e. implementation should not alter a specific element
   element.innerHTML = loaded ? "Get next" : "Loading...";
   element.classList.toggle("button-not-loading");
   element.classList.toggle("button-loading");
@@ -55,16 +53,16 @@ function processRecords (records) {
   var sortedRecords = sortRecords(records);
   var html = "";
   var tr;
-  sortedRecords.forEach(function (index, value, array) {
+  sortedRecords.forEach((record) => {
     tr = "";
     tr +=
       "<tr>" +
-        "<td>" + value.date + "</td>" +
-        "<td>" + value.name + "</td>" +
-        "<td>" + value.natInsNumber + "</td>" +
-        "<td>" + value.hoursWorked + "</td>" +
-        "<td>" + value.hourlyRate + "</td>" +
-        "<td>" + (value.hoursWorked * value.hourlyRate) + "</td>" +
+        "<td>" + record.date + "</td>" +
+        "<td>" + record.name + "</td>" +
+        "<td>" + record.natInsNumber + "</td>" +
+        "<td>" + record.hoursWorked + "</td>" +
+        "<td>" + record.hourlyRate + "</td>" +
+        "<td>" + (record.hoursWorked * record.hourlyRate) + "</td>" +
       "</tr>";
     html += tr;
   });
